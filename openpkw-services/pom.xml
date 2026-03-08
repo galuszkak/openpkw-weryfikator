@@ -9,19 +9,6 @@
 
 	<artifactId>openpkw-services</artifactId>
 	<packaging>jar</packaging>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>13</source>
-					<target>13</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.openpkw</groupId>
@@ -47,12 +34,16 @@
 			<artifactId>spring-web</artifactId>
 		</dependency>
 	 	<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
+			<groupId>jakarta.inject</groupId>
+			<artifactId>jakarta.inject-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.transaction</groupId>
+			<artifactId>jakarta.transaction-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
+			<artifactId>bcprov-jdk18on</artifactId>
 		</dependency>
 
 		<!--<dependency>-->
@@ -70,8 +61,8 @@
 		<!--</dependency>-->
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -112,9 +103,9 @@
 		<!--</dependency>-->
 
 		<dependency>
-			<groupId>net.sf.opencsv</groupId>
+			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
-			<version>2.3</version>
+			<version>5.9</version>
 		</dependency>
 
 		<dependency>

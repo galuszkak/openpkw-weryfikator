@@ -4,7 +4,7 @@ import org.openpkw.weryfikator.helper.JaxRsHelper
 import org.openpkw.weryfikator.rest.Configuration
 import spock.lang.Specification
 
-import javax.ws.rs.client.Entity
+import jakarta.ws.rs.client.Entity
 
 class EchoServicesSpec extends Specification {
 

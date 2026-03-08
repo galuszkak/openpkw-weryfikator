@@ -3,16 +3,15 @@ package org.openpkw.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate5.HibernateExceptionTranslator;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -42,14 +41,12 @@ public class TestJpaConfig {
         jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
         //jpaProperties.put("hibernate.hbm2ddl.import_files", "scheme.sql");
         factory.setJpaProperties(jpaProperties);
-        factory.afterPropertiesSet();
-        factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         return factory;
     }
 
     @Bean
-    public HibernateExceptionTranslator hibernateExceptionTranslator() {
-        return new HibernateExceptionTranslator();
+    public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
+        return new PersistenceAnnotationBeanPostProcessor();
     }
 
 

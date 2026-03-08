@@ -1,6 +1,6 @@
 package org.openpkw.model.entity.security;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * Created by Sebastian on 02.01.2016.

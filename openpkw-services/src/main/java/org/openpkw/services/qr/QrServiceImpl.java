@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.*;
 
 /**

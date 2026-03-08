@@ -11,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.inject.Inject;
-import javax.ws.rs.core.MediaType;
+import jakarta.inject.Inject;
+import org.springframework.http.MediaType;
 
 /**
  * @author Remigiusz Mrozek
@@ -27,7 +27,7 @@ public class InitController {
     @Inject
     private InitService initService;
 
-    @RequestMapping(value = "/init", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/init", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<InitDTO> init() {
         try {
             return new ResponseEntity<>(initService.initDatabase(false), HttpStatus.OK);
@@ -37,7 +37,7 @@ public class InitController {
         }
     }
 
-    @RequestMapping(value = "/reinit", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/reinit", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<InitDTO> reInit() {
         try {
             return new ResponseEntity<>(initService.initDatabase(true), HttpStatus.OK);
@@ -47,13 +47,13 @@ public class InitController {
         }
     }
 
-    @RequestMapping(value = "/generateVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/generateVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> generateVotes() {
         initService.generateVotes();
         return new ResponseEntity<>("Votes generation completed successfully.", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deleteVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/deleteVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> deleteVotes() {
         initService.deleteVotes();
         return new ResponseEntity<>("Votes deleted successfully.", HttpStatus.OK);

@@ -1,7 +1,7 @@
 package org.openpkw.model.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -79,7 +79,7 @@ public class ElectionCommitteeDistrict implements Serializable {
         this.districtCommittee = districtCommittee;
     }
 
-    @XmlTransient
+    @JsonIgnore
     public Collection<ElectionCommitteeVote> getElectionCommitteeVoteCollection() {
         return electionCommitteeVoteCollection;
     }
@@ -88,7 +88,7 @@ public class ElectionCommitteeDistrict implements Serializable {
         this.electionCommitteeVoteCollection = electionCommitteeVoteCollection;
     }
 
-    @XmlTransient
+    @JsonIgnore
     public Collection<Candidate> getCandidateCollection() {
         return candidateCollection;
     }

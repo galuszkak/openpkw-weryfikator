@@ -6,7 +6,7 @@ import org.openpkw.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 /**
  * Created by Lukasz Franczuk on 2015-11-19.

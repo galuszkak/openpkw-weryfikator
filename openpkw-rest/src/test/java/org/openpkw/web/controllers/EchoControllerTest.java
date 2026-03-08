@@ -1,14 +1,14 @@
 package org.openpkw.web.controllers;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openpkw.web.controllers.TestController;
 
 /**
@@ -20,19 +20,19 @@ public class EchoControllerTest {
     public EchoControllerTest() {
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
     }
 
@@ -47,7 +47,5 @@ public class EchoControllerTest {
         Map<String, String> expResult = null;
         Map<String, String> result = instance.echo(object);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
     }
 }

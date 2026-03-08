@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.openpkw.model.entity.Candidate;
 import org.openpkw.model.entity.DistrictCommittee;
@@ -43,7 +43,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 
 /**
  * @author Remigiusz Mrozek
@@ -330,7 +332,9 @@ public class InitServiceImpl implements InitService {
         CSVReader reader = null;
         try {
 
-            reader = new CSVReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME), ',', '\"');
+            reader = new CSVReaderBuilder(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME))
+                    .withCSVParser(new CSVParserBuilder().withSeparator(',').withQuoteChar('"').build())
+                    .build();
 
             List<String[]> listAllFieldInFile = reader.readAll();
             for (int i = 0; i < listAllFieldInFile.size(); i++) {
@@ -420,7 +424,9 @@ public class InitServiceImpl implements InitService {
         CSVReader reader = null;
         try {
 
-            reader = new CSVReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME), ',', '\"');
+            reader = new CSVReaderBuilder(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME))
+                    .withCSVParser(new CSVParserBuilder().withSeparator(',').withQuoteChar('"').build())
+                    .build();
             List<String[]> listAllFieldInFile = reader.readAll();
             for (int i = 0; i < listAllFieldInFile.size(); i++) {
                 candidateList.add(getCandidate(i, listAllFieldInFile, districtCommitteeList));
@@ -463,7 +469,9 @@ public class InitServiceImpl implements InitService {
         districtCommitteeList = new ArrayList<DistrictCommittee>();
         try {
 
-            reader = new CSVReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME), ',', '\"');
+            reader = new CSVReaderBuilder(new InputStreamReader(this.getClass().getResourceAsStream(fileName), CHARSET_NAME))
+                    .withCSVParser(new CSVParserBuilder().withSeparator(',').withQuoteChar('"').build())
+                    .build();
             List<String[]> listAllFieldInFile = reader.readAll();
             for (int i = 0; i < listAllFieldInFile.size(); i++) {
                 districtCommitteeList.add(getDistrictCommittee(i, listAllFieldInFile));

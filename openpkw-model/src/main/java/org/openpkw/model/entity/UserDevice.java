@@ -1,6 +1,6 @@
 package org.openpkw.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class UserDevice implements Serializable {
     private String token;
 
     @Column(name = "token_created_date")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(jakarta.persistence.TemporalType.DATE)
     private Date tokenCreatedDate;
 
     @ManyToOne()

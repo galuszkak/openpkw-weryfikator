@@ -1,6 +1,6 @@
 package org.openpkw.web.controllers;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.openpkw.services.rest.dto.AllVotesAnswerDTO;
 import org.openpkw.services.rest.services.RESTServiceFacade;

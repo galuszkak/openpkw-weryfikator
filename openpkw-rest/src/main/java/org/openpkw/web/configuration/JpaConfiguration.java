@@ -9,7 +9,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -35,7 +35,7 @@ public class JpaConfiguration {
         entityManagerFactory.setDataSource(dataSource());
         entityManagerFactory.setPackagesToScan(new String[]{"org.openpkw.model"});
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         entityManagerFactory.setJpaProperties(properties);
         entityManagerFactory.afterPropertiesSet();

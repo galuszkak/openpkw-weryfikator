@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.inject.Inject;
-import javax.ws.rs.core.MediaType;
+import jakarta.inject.Inject;
+import org.springframework.http.MediaType;
 import java.util.Base64;
 import java.util.Optional;
 
@@ -42,7 +42,7 @@ public class QrResultController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(QrResultController.class);
 
-    @RequestMapping(value = "/qr", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/qr", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<QrResultDTO> saveResult(@RequestBody QrDTO qrDTO) {
 
         ResponseEntity<QrResultDTO> result;

@@ -5,7 +5,7 @@ import org.openpkw.web.utils.SpringProfileHelper
 import org.springframework.test.web.servlet.MvcResult
 import spock.lang.IgnoreIf
 
-import javax.ws.rs.core.MediaType
+import org.springframework.http.MediaType
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
@@ -21,7 +21,7 @@ class DistrictControllerSpec extends AbstractOpenPKWSpec {
 
         when:
         MvcResult mvcResult = mockMvc.perform(get('/districts')
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
                 //.header("Authorization", "Bearer " + token)  //add security token
         ).andExpect(status().isOk()).andReturn();
 

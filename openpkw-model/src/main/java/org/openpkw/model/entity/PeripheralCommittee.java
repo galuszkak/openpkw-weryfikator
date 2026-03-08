@@ -3,10 +3,10 @@ package org.openpkw.model.entity;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity

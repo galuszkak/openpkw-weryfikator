@@ -5,8 +5,8 @@ import groovy.json.JsonSlurper
 import org.glassfish.jersey.client.ClientConfig
 import org.glassfish.jersey.client.ClientProperties
 
-import javax.ws.rs.client.ClientBuilder
-import javax.ws.rs.core.Response
+import jakarta.ws.rs.client.ClientBuilder
+import jakarta.ws.rs.core.Response
 
 class JaxRsHelper {
 

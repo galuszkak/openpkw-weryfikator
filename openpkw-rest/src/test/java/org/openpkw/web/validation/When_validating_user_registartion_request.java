@@ -1,10 +1,10 @@
 package org.openpkw.web.validation;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openpkw.services.user.dto.UserDTO;
 import org.openpkw.validation.RequestValidator;
 import org.openpkw.validation.RestClientErrorMessage;
@@ -38,20 +38,12 @@ public class When_validating_user_registartion_request {
         UserDTO newUser = new UserBuilder().withFirstName("first-name").withLastName("last-name").withEmail("email").build();
         expectException(cut, newUser, RestClientErrorMessage.USER_PASSWORD_IS_MANDATORY.getErrorCode());
     }
-    /*
-    private void expectException(Runnable r, int errorCode) {
-        try {
-            r.run();
-            Assert.fail("An exception was expected but no exception has been thrown.");
-        } catch (RestClientException ex) {
-            Assert.assertThat("Error code " + errorCode + " was expected but error code " + ex.getErrorCode().getErrorCode() + " found. Validation message: " + ex.getErrorCode().getErrorMessage(), ex.getErrorCode().getErrorCode(), is(equalTo(errorCode)));
-        }
-    }*/
-    private void expectException(RequestValidator requestValidator, UserDTO userDTO  , int errorCode) {
+
+    private void expectException(RequestValidator requestValidator, UserDTO userDTO, int errorCode) {
         try {
             requestValidator.validateUserRegistration(userDTO);
         } catch (RestClientException ex) {
-            Assert.assertThat("Error code " + errorCode + " was expected but error code " + ex.getErrorCode().getErrorCode() + " found. Validation message: " + ex.getErrorCode().getErrorMessage(), ex.getErrorCode().getErrorCode(), is(equalTo(errorCode)));
+            assertThat("Error code " + errorCode + " was expected but error code " + ex.getErrorCode().getErrorCode() + " found. Validation message: " + ex.getErrorCode().getErrorMessage(), ex.getErrorCode().getErrorCode(), is(equalTo(errorCode)));
         }
     }
 }

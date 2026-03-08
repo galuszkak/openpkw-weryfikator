@@ -1,6 +1,6 @@
 package org.openpkw.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 

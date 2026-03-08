@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "\"USER\"")
 public class User implements Serializable {
     private static final long serialVersionUID = 6814143181739850328L;
 
