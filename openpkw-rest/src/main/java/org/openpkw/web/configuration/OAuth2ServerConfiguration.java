@@ -7,12 +7,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.crypto.SecretKey;
 import jakarta.inject.Inject;
 
 /**
- * OAuth2 configuration
+ * OAuth2 / JWT configuration.
+ * Configures the resource server to validate JWT tokens issued by the login endpoint.
  */
 @Configuration
 public class OAuth2ServerConfiguration {
@@ -22,6 +26,16 @@ public class OAuth2ServerConfiguration {
 
     @Inject
     private AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler;
+
+    @Bean
+    public SecretKey jwtSigningKey() {
+        return io.jsonwebtoken.Jwts.SIG.HS256.key().build();
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder(SecretKey jwtSigningKey) {
+        return NimbusJwtDecoder.withSecretKey(jwtSigningKey).build();
+    }
 
     @Bean
     @Order(10)
@@ -38,6 +52,7 @@ public class OAuth2ServerConfiguration {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/login").permitAll()
                         .requestMatchers("/api/**").authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {}));
 

@@ -51,6 +51,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/register")
                 .requestMatchers("/api/activate")
                 .requestMatchers("/api/account/reset_password/init")
+                .requestMatchers("/api/login")
                 .requestMatchers("/api/account/reset_password/finish")
                 .requestMatchers("/test/**");
     }
